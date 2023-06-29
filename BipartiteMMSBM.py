@@ -1,6 +1,6 @@
 import sys
 
-import _numpypy as np
+import numpy as np
 from math import *
 #from numarsy import *
 #import numarsy.linear_algebs as la

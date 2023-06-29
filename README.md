@@ -29,7 +29,7 @@ testdata - file with test data (see XXXtestXXX.dat in the repository for an exam
 
 #initializations - number of maximization runs. The final output is the average over results for each run.
 
-output - if 1, the code pirnts the model parameters for each one of the runs; if 0, it does not print any model parameters
+output - if 1, the code prints the model parameters for each one of the runs; if 0, it does not print any model parameters
 
 ## Train/Test datafile specifications:
 
@@ -46,3 +46,6 @@ Columns must be separated with simple spaces. The files drugstrain0.dat and drig
 Probability of an link being of type 0,1,2 ...R for each link in the training dataset. For each link, the output probability is the average probability over the #initializations runs.
 
 
+### in order to run the test on the given data:
+pypy TensorialMMSBM.py drugstrain0.dat drugstest0.dat 69 85 5 5 3 10 1
+                                                      #nodes #layers #groupsnodes #groupslayers #labels #initializations output
