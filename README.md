@@ -42,9 +42,15 @@ node1 node2 layer interaction_type
 Columns must be separated with simple spaces. The files drugstrain0.dat and drigstest0.dat provide an example of input file.
 
 ## Code output: 
+scores file:
+    Probability of a link being of type 0,1,2...R for each link in the training dataset. 
+    For each link, the output probability is the average probability over the #initializations runs.
 
-Probability of an link being of type 0,1,2 ...R for each link in the training dataset. For each link, the output probability is the average probability over the #initializations runs.
-
+params files:
+first line - maximum-liklyhood value of the iteration
+next <n_nodes> lines - membership vector of a node to be in each community out of the K
+next <n_layers> lines - membership vector of a node to be in each community out of the L
+the rest of the lines in the file - for each pair of communities and layer group, the probabilitie(?) of the *something* to be in a cirtain edge type  
 
 ### in order to run the test on the given data:
 pypy TensorialMMSBM.py drugstrain0.dat drugstest0.dat 69 85 5 5 3 10 1
