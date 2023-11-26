@@ -3,33 +3,28 @@ Mixed membership EM algorithms for multi-layered data from the manuscript Tensor
 
 The code for the tensorial model applied to multi-layered data with R types of interactions is:
 
-TensorialMMSBM.py
+`TensorialMMSBM.py`
 
-Usage: pypy TensorialMMSBM.py traindata testdata #nodes #layers #groupsnodes #groupslayers #labels #initializations output
+Usage: 
+`pypy TensorialMMSBM.py traindata testdata #nodes #layers #groupsnodes #groupslayers #labels #initializations output`
 
 The code for the bipartite model applied to multi-layered data with R types of interactions is:
 
-BipartiteMMSBM.py
+`BipartiteMMSBM.py`
 
-Usage: pypy BipartiteMMSBM.py traindata testdata #nodes #layers #groupsnodes #groupslayers #labels #initializations output
+Usage: 
+`pypy BipartiteMMSBM.py traindata testdata #nodes #layers #groupsnodes #groupslayers #labels #initializations output`
 
 traindata - file with training data (see XXXtrainXXX.dat in the repository for an example and explanations below)
-
 testdata - file with test data (see XXXtestXXX.dat in the repository for an example and explanations below)
-
 #nodes - number of nodes in dataset
-
 #layers - number of layers in dataset
-
 #groupsnodes - number of groups of nodes K considered in the MMSBM
-
 #groupslayers - number of groups of layers L considered in the dataset
-
 #labels - number of possible interaction types, R
-
 #initializations - number of maximization runs. The final output is the average over results for each run.
-
 output - if 1, the code prints the model parameters for each one of the runs; if 0, it does not print any model parameters
+
 
 ## Train/Test datafile specifications:
 
@@ -55,3 +50,5 @@ the rest of the lines in the file - for each pair of communities and layer group
 ### in order to run the test on the given data:
 pypy TensorialMMSBM.py drugstrain0.dat drugstest0.dat 69 85 5 5 3 10 1
                                                       #nodes #layers #groupsnodes #groupslayers #labels #initializations output
+                                    
+Note: you can also use python to run the script (instead of pypy).
