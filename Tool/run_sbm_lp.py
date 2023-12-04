@@ -8,12 +8,31 @@
 
 # imports --------
 import sys
+import os
 
 # Run --------
 
 # Get input from command line
+net_path=sys.argv[1]
+min_k=int(sys.argv[2])
+max_k=int(sys.argv[3])
+to_remove=float(sys.argv[4])
+removal_type=sys.argv[5]
+
+# validate input
+if (not os.path.isfile(net_path)):
+    raise("Network file path is incorrect - not a file.")
+if (not min_k > 0):
+    raise("Min number of communitis to detect must be higher then 0.")
+if (not max_k > min_k):
+    raise("Max number of communitis to detect must be higher then the min.")
+if (to_remove >= 1 or to_remove <= 0):
+    raise("Proportion of links to remove must be a number between 0 and 1.")
+if (not (removal_type == "all" or removal_type == "actual")):
+    raise("Link removal method must either \"all\" or \"actual\".")
 
 
+#target output for running tensorial:
 train=sys.argv[1] # train
 test=sys.argv[2] # test
 p=int(sys.argv[3]) # nodes drugs69
