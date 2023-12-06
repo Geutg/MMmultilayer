@@ -23,8 +23,8 @@ testdata - file with test data (see XXXtestXXX.dat in the repository for an exam
 #groupslayers - number of groups of layers L considered in the dataset
 #labels - number of possible interaction types, R
 #initializations - number of maximization runs. The final output is the average over results for each run.
-output - if 1, the code prints the model parameters for each one of the runs; if 0, it does not print any model parameters
-
+#output - if 1, the code prints the model parameters for each one of the runs; if 0, it does not print any model parameters
+#outputfolder - folder path to put all the output files
 
 ## Train/Test datafile specifications:
 
@@ -44,11 +44,11 @@ scores file:
 params files:
 first line - maximum-liklyhood value of the iteration
 next <n_nodes> lines - membership vector of a node to be in each community out of the K
-next <n_layers> lines - membership vector of a node to be in each community out of the L
-the rest of the lines in the file - for each pair of communities and layer group, the probabilitie(?) of the *something* to be in a cirtain edge type  
+next <n_layers> lines - membership vector of a layer to be in each community out of the L
+the rest of the lines in the file - for each pair of communities and layer group, the probabilitie(?) of the *something* to be in a certain edge type  
 
 ### in order to run the test on the given data:
-pypy TensorialMMSBM.py drugstrain0.dat drugstest0.dat 69 85 5 5 3 10 1
-                                                      #nodes #layers #groupsnodes #groupslayers #labels #initializations output
+pypy TensorialMMSBM.py drugstrain0.dat drugstest0.dat 69 85 5 5 3 10 1 output
+                                                      #nodes #layers #groupsnodes #groupslayers #labels #initializations #output #outputfolder
                                     
 Note: you can also use python to run the script (instead of pypy).

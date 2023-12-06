@@ -22,6 +22,9 @@ S=int(sys.argv[6]) #groups of layers
 R=int(sys.argv[7]) #different labels
 sampling=int(sys.argv[8]) #different initializations
 printp=int(sys.argv[9]) #0/1 0noprint 1 print params
+output_path=sys.argv[10] #output folder
+if (not output_path == ""):
+	output_path += '/'
 ############################################
 
 fh=open(train,'r')
@@ -211,7 +214,7 @@ for w in range(sampling):
 			praij[(t,n1,n2)][rr]=praij[(t,n1,n2)][rr]+pra/sampling
 	
 	if printp!=0: 
-		fout2=open('TMMSBMparamsK'+str(K)+'L'+str(S)+'_'+str(w)+'.dat','w')
+		fout2=open(output_path+'TMMSBMparamsK'+str(K)+'L'+str(S)+'_'+str(w)+'.dat','w')
 		fout2.write('%s\n' % Like)
 		for i in range(p):
 			for kk in range(K):
@@ -232,7 +235,7 @@ for w in range(sampling):
 ####################
 ## Test scores
 ###################
-fout=open('TMMSBMscoresK'+str(K)+'L'+str(S)+'.dat','w')
+fout=open(output_path+'TMMSBMscoresK'+str(K)+'L'+str(S)+'.dat','w')
 for e in praij.keys():
 	fout.write('%s %s %s %s ' % (e[0],e[1],e[2],testt[e]))
 	for rr in range(R):
