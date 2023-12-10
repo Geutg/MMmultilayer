@@ -9,21 +9,27 @@
 import random
 import itertools
 import numpy as np
+import pandas as pd
 
 
 # Run -------------------------------------------------
 # I/O functions
-def load_network(file_path):
+def load_network_intralayer(file_path):
+    # file format: first line has column names, is comma seperated (CSV), with these columns:
+    # layer_from,node_from,layer_to,node_to,weight
     fh=open(file_path,'r')
+    next(fh) # skip the first line with the column names
     igot=fh.readlines()
     
     trainn=[]
     for line in igot:
-        about = line.strip().split(' ')
-        trainn.append((int(about[0]),int(about[1]),int(about[2]),int(about[3])))
+        about = line.strip().split(',')
+        if (about[0] == about[2]): # make sure we only have intralayer edges
+            trainn.append((int(about[0]),int(about[1]),int(about[3])))
     fh.close()
 
-    return trainn
+    net = pd.DataFrame(trainn, columns =['layer', 'from', 'to'])
+    return net
 
 
 # link removal

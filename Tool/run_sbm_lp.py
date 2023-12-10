@@ -6,9 +6,14 @@
 # and runs an SBM analysis as well as a link prediction analysis
 # ===================================================
 
-# assumption:
+# ===================================================
+# Assumption:
 # 1. all the layers are in the same group (L = 1)
 # 2. Nodes and layers are numbered consecutively [0,...,#nodes] , [0,...,#layers]
+#
+# example cmd to call this script:
+# python run_sbm_lb.py <path> 3 4 0.2 all 
+# ===================================================
 
 # Imports --------
 import sys
@@ -27,9 +32,6 @@ max_k=int(sys.argv[3])
 to_remove=float(sys.argv[4])
 removal_type=sys.argv[5]
 
-#example cmd:
-# python run_sbm_lb.py <path> 3 4 0.2 all 
-
 # validate input
 if (not os.path.isfile(net_path)):
     raise("Network file path is incorrect - not a file.")
@@ -45,22 +47,24 @@ if (not (removal_type == "all" or removal_type == "actual")):
     raise("Link removal method must either be \"all\" or \"actual\".")
 
 
+
 # TODO: temp values to be deleted when done working
-net_path= "/Users/geutg/Documents/GitHub/MMmultilayer/input/canary_islands_edgelist.csv"
+net_path= "input/canary_islands_edgelist.csv"
 min_k=3
 max_k=4
 to_remove=0.2
 removal_type="all"
 
 
+
 # read network:
-full_net = load_network(net_path)
+intra_only = fnc.load_network_intralayer(net_path)
 
 # remove links according to settings
 if removal_type == "all":
-   new_net = fnc.link_removal_from_all(full_net, to_remove)
+   new_net = fnc.link_removal_from_all(intra_only, to_remove)
 else:
-   new_net = fnc.link_removal_from_actual(full_net, to_remove)
+   new_net = fnc.link_removal_from_actual(intra_only, to_remove)
 # TODO should this occure multiple times as the removal is random?
 
 # save new networks to a file
