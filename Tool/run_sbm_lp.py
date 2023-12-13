@@ -10,6 +10,7 @@
 # Assumption:
 # 1. all the layers are in the same group (L = 1)
 # 2. Nodes and layers are numbered consecutively [0,...,#nodes] , [0,...,#layers]
+# 3. the TensorialMMSBM.py script file is one level up in the directory tree.
 #
 # example cmd to call this script:
 # python run_sbm_lb.py <path> 3 4 0.2 all 
@@ -65,16 +66,37 @@ if removal_type == "all":
    new_net = fnc.link_removal_from_all(intra_only, to_remove)
 else:
    new_net = fnc.link_removal_from_actual(intra_only, to_remove)
-# TODO should this occure multiple times as the removal is random?
+# TODO should this occure multiple times as the removal is random? 
+#      shai says yes - done as running this script multiple times?
 
 # save new networks to a file
+# TODO values I need to extract for performing the tensorial analysis: 
+# taining file mame
+# test file name
+# number of nodes
+# number of layers
+# k
+# L = 1
+# labels = 1
+# iterations = sbm_itr_num
+# should print params = 1
+# output_folder = "output/canary/"
+
 
 # go over range of k
 for i in range (min_k, max_k+1):
-    print(i)
+    print("Calling TensorialMMSBM.py script using K = ", int(i))
+
+    prms = [69,85,i,1,1,sbm_itr_num,1] # TODO intex 5 needs to be checked what is the best option here
+    ints = " ".join([str(x) for x in prms])
+    cmd = "python3 ../TensorialMMSBM.py " + train_file + " " + testfile + " " + ints + " " + outputfolder
+
+    print("command: " + cmd)
+    os.system(cmd)
+
+    print("Dont with K = ", int(i))
 
 # run the tensorial tool TensorialMMSBM.py with the network, for 10 iterations
-# TODO should iteration number be flexible? 
 # TODO check if cd is made using the partial network or the whole thing (we want the second ofc) seems like it is.
 
 # now we have multiple cd for each node 
