@@ -86,4 +86,5 @@ still missing from the implementation at the moment:
  ->
  this might mean the need to call for the link prediction in a separate script altogether, especially of the input edge list is different from the one on the cd analysis.
  ->
- all in all some of Xei's code can be relevant in the implementation of this part of the tool. 
+ all in all some of Xei's code can be relevant in the implementation of this part of the tool. Xei's code is given in th repo:
+ https://github.com/Ecological-Complexity-Lab/lp_sbm_tool

@@ -102,7 +102,7 @@ for i in range (min_k, max_k+1):
 # now we have multiple cd for each node 
 # TODO how to get a single membership from the all the iterations
 
-# calculate AIC BIC for each K in the renge
+# calculate AIC BIC for each K in the renge, this happens after all the params files are available.
 # get k files
 files = listdir('/Users/geutg/Documents/GitHub/MMmultilayer/output')
 
