@@ -18,7 +18,7 @@ Output:
 Tool Snapshot
 =============
 
-This section is here so that next time i have to work on this tool, getting up to speed will be easier.
+This section is here so that next time I have to work on this tool, getting up to speed will be easier.
 
   
 
@@ -47,7 +47,7 @@ questions I wanted to ask (also in the tablet):
 8. cd - is it done one the partial network? is there an option to have it on the whole network?
 9. what is the best way to determine a node's membership from the set of mixed membership param files?
 10. lp - using one layer to predict another, is it an issue if the same edge appears more then once in the training set?
-with those answers I can better the tool.
+with those answers I can better define the tool.
   
 
 ## structure
